@@ -47,6 +47,8 @@
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnRecordStart = new System.Windows.Forms.Button();
+            this.btnRecordStop = new System.Windows.Forms.Button();
+            this.comboBoxDriversNames = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +68,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.comboBoxDriversNames);
+            this.splitContainer1.Panel1.Controls.Add(this.btnRecordStop);
             this.splitContainer1.Panel1.Controls.Add(this.btnRecordStart);
             // 
             // splitContainer1.Panel2
@@ -177,6 +181,24 @@
             this.btnRecordStart.TabIndex = 0;
             this.btnRecordStart.Text = "Start";
             this.btnRecordStart.UseVisualStyleBackColor = true;
+            this.btnRecordStart.Click += new System.EventHandler(this.btnRecordStart_Click);
+            // 
+            // btnRecordStop
+            // 
+            this.btnRecordStop.Location = new System.Drawing.Point(12, 41);
+            this.btnRecordStop.Name = "btnRecordStop";
+            this.btnRecordStop.Size = new System.Drawing.Size(75, 23);
+            this.btnRecordStop.TabIndex = 1;
+            this.btnRecordStop.Text = "Stop";
+            this.btnRecordStop.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxDriversNames
+            // 
+            this.comboBoxDriversNames.FormattingEnabled = true;
+            this.comboBoxDriversNames.Location = new System.Drawing.Point(12, 71);
+            this.comboBoxDriversNames.Name = "comboBoxDriversNames";
+            this.comboBoxDriversNames.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxDriversNames.TabIndex = 2;
             // 
             // Form1
             // 
@@ -208,6 +230,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button btnRecordStop;
+        private System.Windows.Forms.ComboBox comboBoxDriversNames;
     }
 }
 
