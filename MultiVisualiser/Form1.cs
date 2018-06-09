@@ -16,14 +16,17 @@ namespace MultiVisualiser
     public partial class Form1 : Form
     {
         SoundService soundService = new SoundService();
-        float[] samplesBuffer = new float[512];
         Chart[] charts;
-        int CHART_MAX_VALUES = 3000;
 
         public Form1()
         {
             InitializeComponent();
             this.charts = new Chart[] { this.chart1, this.chart2, this.chart3, this.chart4 };
+            foreach (var chart in charts)
+            {
+                chart.ChartAreas[0].AxisY.Maximum = Int16.MaxValue;
+            }
+
             string[] driversNames = this.soundService.getDriverNamesAvailable();
             foreach (string name in driversNames)
             {
@@ -40,7 +43,7 @@ namespace MultiVisualiser
             {
                 String driverName = this.comboBoxDriversNames.Items[selectedIndex].ToString();
                 this.soundService.init(driverName,1, OnAsioOutAudioAvailable);
-                for (int i = 1; i <= this.soundService.getInputChannelsCount(); i++)
+                for (int i = 1; i <= this.soundService.getMaxInputChannelsCount(); i++)
                 {
                     this.сomboBoxChannelsCount.Items.Add(i);
                 }
@@ -49,26 +52,31 @@ namespace MultiVisualiser
 
         private void OnAsioOutAudioAvailable(object sender, AsioAudioAvailableEventArgs e)
         {
-            e.GetAsInterleavedSamples(samplesBuffer);
+            float[] samplesBuffer = e.GetAsInterleavedSamples();     
+            Console.WriteLine("STARTED");
             Console.WriteLine("SAMPLES_PER_BUFFER:" + e.SamplesPerBuffer.ToString());
             Console.WriteLine("INPUT_BUFFERS:" + e.InputBuffers.Length);
             Console.WriteLine("bytes:" + samplesBuffer.Length);
-            int channelsCount = this.soundService.getInputChannelsCount();
-            for (int i = 0; i < this.samplesBuffer.Length; i += channelsCount)
+            int channelsCount = this.soundService.getCurrentChannelsCount();
+            for (int i = 0; i < samplesBuffer.Length; i += channelsCount)
             {
                 for (int j = 0; j < channelsCount; j++)
                 {
                     Chart chart = this.charts[j];
-                    float signalValue = this.samplesBuffer[i + j];
+                    float signalValue = samplesBuffer[i + j] * Int16.MaxValue;
                     chart.Invoke((MethodInvoker)delegate {
-                        if(chart.Series[0].Points.Count > CHART_MAX_VALUES )
-                        {
-                            chart.Series[0].Points.Clear();
-                        }
+                        int maxIndex = (int)chart.ChartAreas[0].AxisX.Maximum;
                         chart.Series[0].Points.Add(signalValue);
+                        int pointsCount = chart.Series[0].Points.Count;
+                        if (pointsCount >= maxIndex)
+                        {
+                            chart.Series[0].Points.RemoveAt(0);
+                            chart.ResetAutoValues();
+                        }
                     });
                 }
             }
+            Console.WriteLine("HANDLED");
 
         }
 

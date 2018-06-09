@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnRecordStart = new System.Windows.Forms.Button();
-            this.btnRecordStop = new System.Windows.Forms.Button();
-            this.comboBoxDriversNames = new System.Windows.Forms.ComboBox();
             this.сomboBoxChannelsCount = new System.Windows.Forms.ComboBox();
+            this.comboBoxDriversNames = new System.Windows.Forms.ComboBox();
+            this.btnRecordStop = new System.Windows.Forms.Button();
+            this.btnRecordStart = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -81,6 +81,42 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // сomboBoxChannelsCount
+            // 
+            this.сomboBoxChannelsCount.FormattingEnabled = true;
+            this.сomboBoxChannelsCount.Location = new System.Drawing.Point(13, 108);
+            this.сomboBoxChannelsCount.Name = "сomboBoxChannelsCount";
+            this.сomboBoxChannelsCount.Size = new System.Drawing.Size(104, 21);
+            this.сomboBoxChannelsCount.TabIndex = 3;
+            // 
+            // comboBoxDriversNames
+            // 
+            this.comboBoxDriversNames.FormattingEnabled = true;
+            this.comboBoxDriversNames.Location = new System.Drawing.Point(12, 71);
+            this.comboBoxDriversNames.Name = "comboBoxDriversNames";
+            this.comboBoxDriversNames.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxDriversNames.TabIndex = 2;
+            // 
+            // btnRecordStop
+            // 
+            this.btnRecordStop.Location = new System.Drawing.Point(12, 41);
+            this.btnRecordStop.Name = "btnRecordStop";
+            this.btnRecordStop.Size = new System.Drawing.Size(75, 23);
+            this.btnRecordStop.TabIndex = 1;
+            this.btnRecordStop.Text = "Stop";
+            this.btnRecordStop.UseVisualStyleBackColor = true;
+            this.btnRecordStop.Click += new System.EventHandler(this.btnRecordStop_Click);
+            // 
+            // btnRecordStart
+            // 
+            this.btnRecordStart.Location = new System.Drawing.Point(12, 12);
+            this.btnRecordStart.Name = "btnRecordStart";
+            this.btnRecordStart.Size = new System.Drawing.Size(75, 23);
+            this.btnRecordStart.TabIndex = 0;
+            this.btnRecordStart.Text = "Start";
+            this.btnRecordStart.UseVisualStyleBackColor = true;
+            this.btnRecordStart.Click += new System.EventHandler(this.btnRecordStart_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -99,68 +135,9 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 450);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // chart1
-            // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Enabled = false;
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(3, 3);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(259, 219);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // chart2
-            // 
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Enabled = false;
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
-            this.chart2.Location = new System.Drawing.Point(268, 3);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(259, 219);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
-            // 
-            // chart3
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea2);
-            this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.chart3.Legends.Add(legend2);
-            this.chart3.Location = new System.Drawing.Point(3, 228);
-            this.chart3.Name = "chart3";
-            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart3.Series.Add(series2);
-            this.chart3.Size = new System.Drawing.Size(259, 219);
-            this.chart3.TabIndex = 2;
-            this.chart3.Text = "chart3";
-            // 
             // chart4
             // 
+            chartArea1.AxisX.Maximum = 1000D;
             chartArea1.Name = "ChartArea1";
             this.chart4.ChartAreas.Add(chartArea1);
             this.chart4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -179,41 +156,69 @@
             this.chart4.TabIndex = 3;
             this.chart4.Text = "chart4";
             // 
-            // btnRecordStart
+            // chart3
             // 
-            this.btnRecordStart.Location = new System.Drawing.Point(12, 12);
-            this.btnRecordStart.Name = "btnRecordStart";
-            this.btnRecordStart.Size = new System.Drawing.Size(75, 23);
-            this.btnRecordStart.TabIndex = 0;
-            this.btnRecordStart.Text = "Start";
-            this.btnRecordStart.UseVisualStyleBackColor = true;
-            this.btnRecordStart.Click += new System.EventHandler(this.btnRecordStart_Click);
+            chartArea2.AxisX.Maximum = 1000D;
+            chartArea2.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea2);
+            this.chart3.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart3.Legends.Add(legend2);
+            this.chart3.Location = new System.Drawing.Point(3, 228);
+            this.chart3.Name = "chart3";
+            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart3.Series.Add(series2);
+            this.chart3.Size = new System.Drawing.Size(259, 219);
+            this.chart3.TabIndex = 2;
+            this.chart3.Text = "chart3";
             // 
-            // btnRecordStop
+            // chart2
             // 
-            this.btnRecordStop.Location = new System.Drawing.Point(12, 41);
-            this.btnRecordStop.Name = "btnRecordStop";
-            this.btnRecordStop.Size = new System.Drawing.Size(75, 23);
-            this.btnRecordStop.TabIndex = 1;
-            this.btnRecordStop.Text = "Stop";
-            this.btnRecordStop.UseVisualStyleBackColor = true;
-            this.btnRecordStop.Click += new System.EventHandler(this.btnRecordStop_Click);
+            chartArea3.AxisX.Maximum = 1000D;
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
+            this.chart2.Location = new System.Drawing.Point(268, 3);
+            this.chart2.Name = "chart2";
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
+            this.chart2.Size = new System.Drawing.Size(259, 219);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
             // 
-            // comboBoxDriversNames
+            // chart1
             // 
-            this.comboBoxDriversNames.FormattingEnabled = true;
-            this.comboBoxDriversNames.Location = new System.Drawing.Point(12, 71);
-            this.comboBoxDriversNames.Name = "comboBoxDriversNames";
-            this.comboBoxDriversNames.Size = new System.Drawing.Size(251, 21);
-            this.comboBoxDriversNames.TabIndex = 2;
-            // 
-            // сomboBoxChannelsCount
-            // 
-            this.сomboBoxChannelsCount.FormattingEnabled = true;
-            this.сomboBoxChannelsCount.Location = new System.Drawing.Point(13, 108);
-            this.сomboBoxChannelsCount.Name = "сomboBoxChannelsCount";
-            this.сomboBoxChannelsCount.Size = new System.Drawing.Size(104, 21);
-            this.сomboBoxChannelsCount.TabIndex = 3;
+            chartArea4.AxisX.Maximum = 1000D;
+            chartArea4.AxisX.Minimum = 0D;
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
+            this.chart1.Size = new System.Drawing.Size(259, 219);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
             // 
             // Form1
             // 
@@ -228,10 +233,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }

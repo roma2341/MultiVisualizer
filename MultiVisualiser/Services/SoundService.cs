@@ -18,6 +18,10 @@ namespace MultiVisualiser.Services
             this.init(driverName, channels, recordHandler);
             this.asioOut.Play();
         }
+        public int getCurrentChannelsCount()
+        {
+            return this.channels;
+        }
         public void stopRecording()
         {
             if (this.asioOut != null)
@@ -42,7 +46,7 @@ namespace MultiVisualiser.Services
         {
             return AsioOut.GetDriverNames();
         }
-        public int getInputChannelsCount()
+        public int getMaxInputChannelsCount()
         {
             var inputChannels = this.asioOut.DriverInputChannelCount;
             return inputChannels;
