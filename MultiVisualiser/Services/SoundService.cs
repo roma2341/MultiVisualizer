@@ -13,10 +13,9 @@ namespace MultiVisualiser.Services
         int SAMPLE_RATE = 44100;
         bool inited = false;
         int channels = 1;
-        float[] samplesBuffer = new float[4194304];
-        public void startRecording(string driverName,int channels)
+        public void startRecording(string driverName,int channels, EventHandler<AsioAudioAvailableEventArgs> recordHandler)
         {
-            this.init(driverName, channels);
+            this.init(driverName, channels, recordHandler);
             this.asioOut.Play();
         }
         public void stopRecording()
@@ -26,7 +25,7 @@ namespace MultiVisualiser.Services
                 this.asioOut.Stop();
             }
         }
-        public void init(string driverName,int channels)
+        public void init(string driverName,int channels,EventHandler<AsioAudioAvailableEventArgs> recordHandler)
         {
             if (this.asioOut != null)
             {
@@ -35,7 +34,7 @@ namespace MultiVisualiser.Services
             }
             this.channels = channels;
             this.asioOut = new AsioOut(driverName);
-            this.asioOut.AudioAvailable += OnAsioOutAudioAvailable;
+            this.asioOut.AudioAvailable += recordHandler;
             this.asioOut.InitRecordAndPlayback(null, channels, SAMPLE_RATE);
 
         }
@@ -49,12 +48,6 @@ namespace MultiVisualiser.Services
             return inputChannels;
         }
 
-        void OnAsioOutAudioAvailable(object sender, AsioAudioAvailableEventArgs e)
-        {
-           e.GetAsInterleavedSamples(samplesBuffer);
-            Console.WriteLine("SAMPLES_PER_BUFFER:" + e.SamplesPerBuffer.ToString());
-            Console.WriteLine("INPUT_BUFFERS:" + e.InputBuffers.Length);
-            Console.WriteLine("bytes:" + samplesBuffer.Length);
-        }
+
     }
 }
