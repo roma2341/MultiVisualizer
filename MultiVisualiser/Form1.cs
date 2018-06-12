@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace MultiVisualiser
 {
     public partial class Form1 : Form
     {
+        private bool isStartButtonEnabled = false;
+        private bool isStopButtonEnabled = false;
+        private bool isFirstChunk = true;
         SoundService soundService = new SoundService();
         Chart[] charts;
 
@@ -36,8 +40,34 @@ namespace MultiVisualiser
 
         }
 
+        private void setStartButtonEnabled(bool isEnabled)
+        {
+            /*check if state changed*/
+            if(isStartButtonEnabled == isEnabled)
+            {
+                return;
+            }
+
+            this.btnRecordStart.Enabled = isEnabled;
+            isStartButtonEnabled = isEnabled;
+        }
+
+        private void setStopButtonEnabled(bool isEnabled)
+        {
+            /*check if already enabled*/
+            if (isStopButtonEnabled == isEnabled)
+            {
+                return;
+            }
+
+            this.btnRecordStop.Enabled = isEnabled;
+            isStopButtonEnabled = isEnabled;
+        }
+
+
         private void DriverHameChanged(object sender, EventArgs e)
         {
+            setStartButtonEnabled(true);
             int selectedIndex = this.comboBoxDriversNames.SelectedIndex;
             if (selectedIndex != -1)
             {
@@ -50,6 +80,33 @@ namespace MultiVisualiser
             }
         }
 
+        private void writeInterleavedSamplesToCSV(float[] buffer,int channelsCount,bool append = true)
+        {
+            string fileName = this.textBoxFileName.Text;
+            using (var w = new StreamWriter(fileName, append)) 
+            {
+                for (int i = 0; i < buffer.Length; i += channelsCount)
+                {
+                    if(i > 0)
+                    {
+                        w.WriteLine();
+                    }
+                    for (int j = 0; j < channelsCount; j++)
+                    {
+                        if (j > 0)
+                        {
+                            w.Write(',');
+                        }
+                        int intValue = (int) (buffer[i + j] * Int16.MaxValue);
+                        w.Write(intValue);
+                    }
+
+                }
+                w.Flush();
+
+            }
+        }
+
         private void OnAsioOutAudioAvailable(object sender, AsioAudioAvailableEventArgs e)
         {
             float[] samplesBuffer = e.GetAsInterleavedSamples();     
@@ -58,24 +115,32 @@ namespace MultiVisualiser
             Console.WriteLine("INPUT_BUFFERS:" + e.InputBuffers.Length);
             Console.WriteLine("bytes:" + samplesBuffer.Length);
             int channelsCount = this.soundService.getCurrentChannelsCount();
-            for (int i = 0; i < samplesBuffer.Length; i += channelsCount)
+            if (this.cbRecordFile.Checked)
             {
-                for (int j = 0; j < channelsCount; j++)
+                bool appendToFile = this.isFirstChunk == false;
+                writeInterleavedSamplesToCSV(samplesBuffer, channelsCount, appendToFile);
+            }
+            else {
+                for (int i = 0; i < samplesBuffer.Length; i += channelsCount)
                 {
-                    Chart chart = this.charts[j];
-                    float signalValue = samplesBuffer[i + j] * Int16.MaxValue;
-                    chart.Invoke((MethodInvoker)delegate {
-                        int maxIndex = (int)chart.ChartAreas[0].AxisX.Maximum;
-                        chart.Series[0].Points.Add(signalValue);
-                        int pointsCount = chart.Series[0].Points.Count;
-                        if (pointsCount >= maxIndex)
-                        {
-                            chart.Series[0].Points.RemoveAt(0);
-                            chart.ResetAutoValues();
-                        }
-                    });
+                    for (int j = 0; j < channelsCount; j++)
+                    {
+                        Chart chart = this.charts[j];
+                        float signalValue = samplesBuffer[i + j] * Int16.MaxValue;
+                        chart.Invoke((MethodInvoker)delegate {
+                            int maxIndex = (int)chart.ChartAreas[0].AxisX.Maximum;
+                            chart.Series[0].Points.Add(signalValue);
+                            int pointsCount = chart.Series[0].Points.Count;
+                            if (pointsCount >= maxIndex)
+                            {
+                                chart.Series[0].Points.RemoveAt(0);
+                                chart.ResetAutoValues();
+                            }
+                        });
+                    }
                 }
             }
+            isFirstChunk = false;
             Console.WriteLine("HANDLED");
 
         }
@@ -84,12 +149,15 @@ namespace MultiVisualiser
         {
             int channelsCount = int.Parse(this.сomboBoxChannelsCount.SelectedItem.ToString());
             string driverName = this.comboBoxDriversNames.SelectedItem.ToString();
-            this.soundService.startRecording(driverName,channelsCount, OnAsioOutAudioAvailable);
+            soundService.startRecording(driverName,channelsCount, OnAsioOutAudioAvailable);
+            setStopButtonEnabled(true);
+            isFirstChunk = true;
         }
 
         private void btnRecordStop_Click(object sender, EventArgs e)
         {
-            this.soundService.stopRecording();
+            soundService.stopRecording();
+            setStartButtonEnabled(true);
         }
     }
 }

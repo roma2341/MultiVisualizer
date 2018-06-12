@@ -41,6 +41,12 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbRecordFile = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.сomboBoxChannelsCount = new System.Windows.Forms.ComboBox();
             this.comboBoxDriversNames = new System.Windows.Forms.ComboBox();
             this.btnRecordStop = new System.Windows.Forms.Button();
@@ -69,6 +75,12 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.cbRecordFile);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxFileName);
             this.splitContainer1.Panel1.Controls.Add(this.сomboBoxChannelsCount);
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxDriversNames);
             this.splitContainer1.Panel1.Controls.Add(this.btnRecordStop);
@@ -81,24 +93,82 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(221, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Для початку роботи оберіть драйвер ASIO";
+            // 
+            // cbRecordFile
+            // 
+            this.cbRecordFile.AutoSize = true;
+            this.cbRecordFile.Location = new System.Drawing.Point(105, 17);
+            this.cbRecordFile.Name = "cbRecordFile";
+            this.cbRecordFile.Size = new System.Drawing.Size(94, 17);
+            this.cbRecordFile.TabIndex = 8;
+            this.cbRecordFile.Text = "Запис у файл";
+            this.cbRecordFile.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(168, 152);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Імя файлу";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(167, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Кількість каналів";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(171, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Драйвер АSIO";
+            // 
+            // textBoxFileName
+            // 
+            this.textBoxFileName.Location = new System.Drawing.Point(13, 148);
+            this.textBoxFileName.Name = "textBoxFileName";
+            this.textBoxFileName.Size = new System.Drawing.Size(139, 20);
+            this.textBoxFileName.TabIndex = 4;
+            this.textBoxFileName.Text = "Sound.csv";
+            // 
             // сomboBoxChannelsCount
             // 
             this.сomboBoxChannelsCount.FormattingEnabled = true;
+            this.сomboBoxChannelsCount.Items.AddRange(new object[] {
+            "1"});
             this.сomboBoxChannelsCount.Location = new System.Drawing.Point(13, 108);
             this.сomboBoxChannelsCount.Name = "сomboBoxChannelsCount";
-            this.сomboBoxChannelsCount.Size = new System.Drawing.Size(104, 21);
+            this.сomboBoxChannelsCount.Size = new System.Drawing.Size(139, 21);
             this.сomboBoxChannelsCount.TabIndex = 3;
+            this.сomboBoxChannelsCount.Text = "1";
             // 
             // comboBoxDriversNames
             // 
             this.comboBoxDriversNames.FormattingEnabled = true;
             this.comboBoxDriversNames.Location = new System.Drawing.Point(12, 71);
             this.comboBoxDriversNames.Name = "comboBoxDriversNames";
-            this.comboBoxDriversNames.Size = new System.Drawing.Size(251, 21);
+            this.comboBoxDriversNames.Size = new System.Drawing.Size(140, 21);
             this.comboBoxDriversNames.TabIndex = 2;
             // 
             // btnRecordStop
             // 
+            this.btnRecordStop.Enabled = false;
             this.btnRecordStop.Location = new System.Drawing.Point(12, 41);
             this.btnRecordStop.Name = "btnRecordStop";
             this.btnRecordStop.Size = new System.Drawing.Size(75, 23);
@@ -109,6 +179,7 @@
             // 
             // btnRecordStart
             // 
+            this.btnRecordStart.Enabled = false;
             this.btnRecordStart.Location = new System.Drawing.Point(12, 12);
             this.btnRecordStart.Name = "btnRecordStart";
             this.btnRecordStart.Size = new System.Drawing.Size(75, 23);
@@ -229,6 +300,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -253,6 +325,12 @@
         private System.Windows.Forms.Button btnRecordStop;
         private System.Windows.Forms.ComboBox comboBoxDriversNames;
         private System.Windows.Forms.ComboBox сomboBoxChannelsCount;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxFileName;
+        private System.Windows.Forms.CheckBox cbRecordFile;
+        private System.Windows.Forms.Label label4;
     }
 }
 
